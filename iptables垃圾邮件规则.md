@@ -1,0 +1,1 @@
+	iptables -A OUTPUT -p tcp --match multiport --dports 25,109,110,143,465,993,995 -m state --state NEW,ESTABLISHED -j REJECT
