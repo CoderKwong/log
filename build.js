@@ -85,4 +85,4 @@ function build(filePath,fileName,i){
 }
 
 
-build('./','documents',0);
+build('./','logs',0);

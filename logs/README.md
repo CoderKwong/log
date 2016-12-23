@@ -24,6 +24,7 @@
 	+ [OSX在当前目录打开终端.md](logs/OSX在当前目录打开终端.md)
 	+ [OSX记不住的命令md.md](logs/OSX记不住的命令md.md)
 	+ [RaspberryPi安装VPN.md](logs/RaspberryPi安装VPN.md)
+	+ [README.md](logs/README.md)
 	+ [rpi安装unrar.md](logs/rpi安装unrar.md)
 	+ [shadowsocks+polipo+Squid认证的http代理.md](logs/shadowsocks+polipo+Squid认证的http代理.md)
 	+ [shell 脚本.md](logs/shell%20脚本.md)
