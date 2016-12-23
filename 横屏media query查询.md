@@ -1,2 +1,0 @@
-
-	@media screen and (orientation:landscape) {}
