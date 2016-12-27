@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+<title>Rating</title>
+</head>
+<body>
+<style type="text/css">
+*{margin: 0; padding: 0; font-family: arial}
+
+.rating{
+	width: 80px;
+	height: 16px;
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpjYWQ4Mjg3ZC00NzgxLTg3NGEtYWNhZC1hYzIyZDczN2YwZTIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6Q0QzMzIwN0U4OUQ4MTFFNjg0RUQ4M0QzM0IxMjMwNTgiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6Q0QzMzIwN0Q4OUQ4MTFFNjg0RUQ4M0QzM0IxMjMwNTgiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0YTE1YmNhYy00YTFmLTcyNDctYTYzZS0yYWRkODFmOTA4OTQiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDpiYjVjOGRhMi03NzMxLTExNzktYmQ5Zi1hY2NiMTIxZmM3ZmQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4K6Rs7AAAA6UlEQVR42mK8fPkyAx4wH4j/A3ESLgVMeDQbAnE8ECdA2SQb0AbEjFDcSqoBNkDsgcT3hIoRNIATiC2AuAeL2h6oHCeyIAsQxwKxAxAbA7E2VAwbMAfi40D8B4ivAvFZID7ACIyFO0CGMgN54A7IC4FA/JEMzSA9QSADQAkhCIh/kaD5F1TPZVgg7oMmlv9EaIYlrH3osbAUiNcRYcBqqFqs0chPhAGC+NKBPBEGyOMzQA5LYP0k1gAJIGaHsn8A8RRo+lAB4slQMQaoGnFsBvAB8VsgngDVmAvET6A4Dyo2AapGAKYJIMAAhD0s6BF5N4IAAAAASUVORK5CYII=) repeat-x 0 0;
+	position: relative;
+}
+.rating .submit{display: none}
+
+.rating .label{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	cursor: pointer;
+	font-size: 0
+}
+.rating .star{
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	top: 0;
+	opacity: 0
+}
+
+.rating .star:hover + .label,
+.rating .star:checked + .label{
+	background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMDY3IDc5LjE1Nzc0NywgMjAxNS8wMy8zMC0yMzo0MDo0MiAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpjYWQ4Mjg3ZC00NzgxLTg3NGEtYWNhZC1hYzIyZDczN2YwZTIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6Q0VDREMwNEQ4OUYzMTFFNjg0RUQ4M0QzM0IxMjMwNTgiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6Q0VDREMwNEM4OUYzMTFFNjg0RUQ4M0QzM0IxMjMwNTgiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0YTE1YmNhYy00YTFmLTcyNDctYTYzZS0yYWRkODFmOTA4OTQiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDpiYjVjOGRhMi03NzMxLTExNzktYmQ5Zi1hY2NiMTIxZmM3ZmQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5zglR3AAAA5ElEQVR42mL8v4MBH5gPxP+BOAmXAkY8BhgC8Vko2xiIz2NTxITH9jaQBVDciksRLgNsgNgDie8JFSNoACcQWwBxDxa1PVA5TvQwiAXSDlB/agMxCwN+8AeIr0LD5wDIgDtAhjIDeeAOyAuBQPyRDM0gPUEgAy6DGED8iwTNv6B6LsMCcR80sfwnQjMsYe1Dj4WlQLyOCANWQ9VijUZ+IgwQxJcO5IkwQB6fAXJYAusnsQZIADE7lP0DiKdA04cKEE+GijFA1YhjM4APiN8C8QSoxlwgfgLFeVCxCVA1AjBNAAEGAGCHLq+qMpSvAAAAAElFTkSuQmCC) repeat-x 0 0;
+}
+.rating .star:hover + .label{
+	
+}
+
+.rating .star-1{ left: 0; z-index: 6 }
+.rating .star-1 + .label{ right: 64px; z-index: 5 }
+
+.rating .star-2{ left: 16px; z-index: 5 }
+.rating .star-2 + .label{ right: 48px; z-index: 4 }
+
+.rating .star-3{ left: 32px; z-index: 4 }
+.rating .star-3 + .label{ right: 32px; z-index: 3 }
+
+.rating .star-4{ left: 48px; z-index: 3 }
+.rating .star-4 + .label{ right: 16px; z-index: 2 }
+
+.rating .star-5{ left: 64px; z-index: 2 }
+.rating .star-5 + .label{ right: 0; z-index: 1 }
+
+.rating .desc{
+	font-size: 14px;
+	width: 80px;
+	height: 20px;
+	line-height: 20px;
+	position: absolute;
+	top: -2px;
+	color: #555;
+	background-color: #fff;
+}
+.rating .desc{ left: 90px; opacity: 0}
+
+
+.rating .star-1:hover + .label .desc,
+.rating .star-1:checked + .label .desc{ opacity: 1; z-index: 1}
+
+.rating .star-2:hover + .label .desc,
+.rating .star-2:checked + .label .desc{ opacity: 1; z-index: 2}
+
+.rating .star-3:hover + .label .desc,
+.rating .star-3:checked + .label .desc{ opacity: 1; z-index: 3}
+
+.rating .star-4:hover + .label .desc,
+.rating .star-4:checked + .label .desc{ opacity: 1; z-index: 4}
+
+.rating .star-5:hover + .label .desc,
+.rating .star-5:checked + .label .desc{ opacity: 1; z-index: 5}
+</style>
+<div style="padding: 20px">
+	<form class="rating" method="post" name="rating">
+		<input class="star star-1" type="radio" name="rating" value="1" id="stat-1"><label for="stat-1" class="label"><span class="desc">讨厌！</span></label>
+		<input class="star star-2" type="radio" name="rating" value="2" id="stat-2"><label for="stat-2" class="label"><span class="desc">没感觉~</span></label>
+		<input class="star star-3" type="radio" name="rating" value="3" id="stat-3"><label for="stat-3" class="label"><span class="desc">还行~</span></label>
+		<input class="star star-4" type="radio" name="rating" value="4" id="stat-4"><label for="stat-4" class="label"><span class="desc">不错哦！</span></label>
+		<input class="star star-5" type="radio" name="rating" value="5" id="stat-5"><label for="stat-5" class="label"><span class="desc">赞！！！</span></label>
+		<button type="submit" class="submit">提交</button>
+	</form>
+</div>
+</body>
+</html>
